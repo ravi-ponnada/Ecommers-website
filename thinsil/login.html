@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My E-commerce Store</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <nav class="bg-gray-900 text-white p-4">
+    <h1 class="text-4xl font-bold my-6 col-lg-6">Welcome to My E-commerce Store</h1>
+  </nav>
+  <div id="app" class="flex justify-center items-center h-screen">
+    <div class="bg-white shadow-md rounded-lg p-8 w-80" id="login-container">
+      <h1 class="text-2xl font-bold mb-6">Login</h1>
+      <form id="login-form">
+        <div class="mb-4">
+          <label for="email" class="block mb-2">Email</label>
+          <input type="email" id="email" class="border rounded p-2 w-full" placeholder="Enter your email">
+        </div>
+        <div class="mb-6">
+          <label for="password" class="block mb-2">Password</label>
+          <input type="password" id="password" class="border rounded p-2 w-full" placeholder="Enter your password">
+        </div>
+        <button class="bg-blue-500 text-white font-semibold py-2 px-4 rounded w-full" id="login-btn">Login</button>
+      </form>
+      <p class="text-center text-gray-500 text-sm mt-4">Don't have an account? <a href="signup.html" class="text-blue-500" id="signup-link">Sign up</a></p>
+    </div>
+
+    <div class="hidden" id="index-container">
+      <!-- Content of the index (homepage) -->
+      <h1 class="text-2xl font-bold">Login Successful!!</h1>
+      <h1 class="text-2xl font-bold">Welcome to the E-commerce Store!</h1>
+      <a href="index.html"><p class="text-gray-700">click here to go to the homepage</p></a>
+    </div>
+  </div>
+
+  <script>
+    // Get the elements
+    const loginContainer = document.getElementById('login-container');
+    const indexContainer = document.getElementById('index-container');
+    const loginForm = document.getElementById('login-form');
+    const loginBtn = document.getElementById('login-btn');
+    const signupLink = document.getElementById('signup-link');
+
+    // Add event listener to the login form
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Perform login logic here (e.g., validate credentials, check with backend, etc.)
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // Simulating successful login for demonstration purposes
+      if (email && password) {
+        showIndexPage();
+      }
+    });
+
+    // Add event listener to the signup link
+    signupLink.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      // Show the login container and hide the index container
+      loginContainer.style.display = 'block';
+      indexContainer.style.display = 'none';
+    });
+
+    // Function to show the index (homepage) content and hide the login form
+    function showIndexPage() {
+      loginContainer.style.display = 'none';
+      indexContainer.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
